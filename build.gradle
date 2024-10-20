@@ -1,0 +1,41 @@
+plugins {
+    id 'java'
+    id 'war'
+}
+
+group 'org.zerock'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    junitVersion = '5.10.2'
+}
+
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+dependencies {
+    // 서블릿 API는 컴파일 타임에만 필요하며, 배포 시 포함되지 않음
+    compileOnly('javax.servlet:javax.servlet-api:4.0.1')
+
+    // JSP 처리용 Tomcat Jasper 의존성 추가
+    implementation 'org.apache.tomcat.embed:tomcat-embed-jasper:9.0.65'
+
+    // JSTL (JSP 표준 태그 라이브러리) 의존성 추가
+    implementation 'javax.servlet:jstl:1.2'
+
+    // JUnit 5 테스트 의존성 유지
+    testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+}
+
+test {
+    useJUnitPlatform()
+}
