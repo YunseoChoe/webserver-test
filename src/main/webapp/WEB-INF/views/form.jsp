@@ -5,6 +5,7 @@
   Time: 오후 3:52
   To change this template use File | Settings | File Templates.
 --%>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,11 +13,11 @@
   <title>User Form</title>
 </head>
 <body>
-<h1>Please input your name</h1>
+<h1>이름을 적어주세요</h1>
 <form action="submit" method="post">
-  <label for="username">name: </label>
+  <label for="username">이름: </label>
   <input type="text" id="username" name="username">
-  <button type="submit">submit</button>
+  <button type="submit">제출</button>
 </form>
 </body>
 </html>

@@ -20,6 +20,9 @@ public class FormController extends HttpServlet {
     // POST 요청을 처리하는 메소드
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
+
         String username = request.getParameter("username");
 
         // 데이터를 JSP로 전달
