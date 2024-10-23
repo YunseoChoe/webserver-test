@@ -28,12 +28,19 @@ dependencies {
     // JSP 처리용 Tomcat Jasper 의존성 추가
     implementation 'org.apache.tomcat.embed:tomcat-embed-jasper:9.0.65'
 
+    implementation 'mysql:mysql-connector-java:8.0.25'
+
     // JSTL (JSP 표준 태그 라이브러리) 의존성 추가
     implementation 'javax.servlet:jstl:1.2'
 
+    implementation 'org.modelmapper:modelmapper:3.1.0'
     // JUnit 5 테스트 의존성 유지
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+
+    implementation 'org.projectlombok:lombok:1.18.24'
+    annotationProcessor 'org.projectlombok:lombok:1.18.24'
+
 }
 
 test {
