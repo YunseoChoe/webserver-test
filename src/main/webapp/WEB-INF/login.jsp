@@ -23,6 +23,11 @@
   <input type="submit" value="로그인">
 </form>
 
+<!-- 회원가입 버튼 -->
+<a href="/signup">
+  <button type="submit">회원가입</button>
+</a>
+
 <!-- 오류 메시지 처리 -->
 <%--<% String error = request.getParameter("error");--%>
 <%--  if (error != null && error.equals("1")) { %>--%>

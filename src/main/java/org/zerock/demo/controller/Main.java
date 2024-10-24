@@ -20,9 +20,15 @@ public class Main extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         HttpSession session = req.getSession();
+        System.out.println("!");
+        System.out.println(session);
         String vote_session = session.getAttribute("logininfo").toString();
+        System.out.println(vote_session);
         String[] splitSession = vote_session.split(":");
         String vote_writer = splitSession[0];
+
+
+        System.out.println(vote_writer);
 
         try {
             ArrayList<Object[]> voteList = voteListService.voteList(vote_writer);

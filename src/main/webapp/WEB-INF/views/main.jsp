@@ -1,10 +1,12 @@
+<%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@ page import="java.util.ArrayList" %>
-<%
-    Object voteListObj = request.getAttribute("voteList");
-    if (voteListObj instanceof ArrayList) {
-        ArrayList<Object[]> voteList = (ArrayList<Object[]>) voteListObj;
-        if (voteList != null && !voteList.isEmpty()) {
-%>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>메인 페이지</title>
+</head>
+<body>
 <table border="1">
     <tr>
         <th>title</th>
@@ -12,8 +14,13 @@
         <th>let's go</th>
         <th>삭제</th>
     </tr>
-    <% for (Object[] vote : voteList) {
-        // vote[0] = vote_id, vote[1] = title, vote[2] = author (예시)
+    <%
+        Object voteListObj = request.getAttribute("voteList");
+        if (voteListObj instanceof ArrayList) {
+            ArrayList<Object[]> voteList = (ArrayList<Object[]>) voteListObj;
+            if (voteList != null && !voteList.isEmpty()) {
+                for (Object[] vote : voteList) {
+                    // vote[0] = vote_id, vote[1] = title, vote[2] = author (예시)
     %>
     <tr>
         <td><%= vote[1] %></td> <!-- 제목 -->
@@ -25,9 +32,9 @@
                 <% boolean isVoted = (boolean) vote[4];
                     if(isVoted) {
                 %>
-                <button type="submit">revote</button>
+                <button type="submit">재투표하기</button>
                 <% } else {%>
-                <button type="submit">vote</button>
+                <button type="submit">투표하기</button>
                 <% } %>
             </form>
         </td>
@@ -39,17 +46,23 @@
             </form>
         </td>
     </tr>
-    <% } %>
+    <%
+        }
+    } else {
+    %>
+    <tr>
+        <td colspan="4">투표 목록이 없습니다.</td>
+    </tr>
+    <%
+        }
+    } else {
+    %>
+    <tr>
+        <td colspan="4">데이터를 불러오지 못했습니다.</td>
+    </tr>
+    <%
+        }
+    %>
 </table>
-<%
-} else {
-%>
-<p>투표 목록이 없습니다.</p>
-<%
-    }
-} else {
-%>
-<p>데이터를 불러오지 못했습니다.</p>
-<%
-    }
-%>
+</body>
+</html>

@@ -7,7 +7,7 @@
 <h2>투표 등록</h2>
 
 <!-- 투표 등록 폼 -->
-<form action="voteregister" method="post">
+<form action="/voteregister" method="post">
     <!-- 투표 제목 입력 -->
     <label for="vote_title">투표 제목:</label>
     <input type="text" id="vote_title" name="vote_title" required><br><br>

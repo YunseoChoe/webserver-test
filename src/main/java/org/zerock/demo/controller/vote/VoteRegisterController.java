@@ -19,7 +19,9 @@ public class VoteRegisterController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("WEB-INF/views/vote/voteRegister.jsp").forward(req, resp);
+        System.out.println("투표 작성하기로 이동 중 ..");
+        req.getRequestDispatcher("/WEB-INF/views/vote/voteRegister.jsp").forward(req, resp);
+
     }
 
     @Override

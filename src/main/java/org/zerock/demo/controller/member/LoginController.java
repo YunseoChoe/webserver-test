@@ -52,8 +52,8 @@ public class LoginController extends HttpServlet {
             session.setAttribute("logininfo", str);
             System.out.println("로그인 성공");
 
-//            response.sendRedirect("/main");
-            request.getRequestDispatcher("WEB-INF/views/main.jsp").forward(request,response);
+            response.sendRedirect("/main");
+
         }
         else {
             request.getRequestDispatcher("/WEB-INF/views/member/loginerror.jsp").forward(request, response);
