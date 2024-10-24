@@ -42,4 +42,4 @@ bin/
 .DS_Store
 
 ### Custom Files ###
-src/main/org/zerock/demo/util/DBConnectionUtil.java
+src/main/java/org/zerock/demo/util/DBConnectionUtil.java
