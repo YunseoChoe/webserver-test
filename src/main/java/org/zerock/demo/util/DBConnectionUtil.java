@@ -7,9 +7,9 @@ import java.sql.SQLException;
 public enum DBConnectionUtil {
     INSTANCE;
     // 데이터베이스 URL (MySQL 사용)
-    private static final String URL = "jdbc:mysql://localhost:3306/sky09508_db";
-    private static final String USER = "root";  // 사용자 이름
-    private static final String PASSWORD = "1111";  // 비밀번호
+    private static final String URL = "jdbc:mysql://pilab.smu.ac.kr:3306/sky09508_db";
+    private static final String USER = "sky09508";  // 사용자 이름
+    private static final String PASSWORD = "yW7bD2rPjM!";  // 비밀번호
 
     static {
         try {
