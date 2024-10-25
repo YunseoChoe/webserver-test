@@ -11,10 +11,11 @@ import java.io.IOException;
 public class LogoutController extends HttpServlet {
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse resp) throws IOException, SecurityException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse resp) throws IOException {
         HttpSession session = request.getSession();
         session.removeAttribute("logininfo");
         System.out.println("로그아웃!");
         resp.sendRedirect("/");
     }
 }
+
