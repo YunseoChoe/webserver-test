@@ -24,10 +24,10 @@ public class VoteController extends HttpServlet {
         String voteIdParam = req.getParameter("voteId");
 
         try {
-            // voteId 파라미터가 존재하는지 확인
+
             int voteId = Integer.parseInt(voteIdParam);
 
-            // VoteService를 통해 vote_title과 items를 가져오기
+
             ArrayList<Object[]> voteData = voteService.vote(voteId);
 
             if (voteData != null && !voteData.isEmpty()) {
@@ -43,20 +43,20 @@ public class VoteController extends HttpServlet {
                         item.add((String) data[1]);
                     }
 
-                    // items_id 추가는 항상 data[2]로 접근
+
                     if (data.length > 2 && data[2] != null) {
                         item_id.add((Integer) data[2]);
                     }
                 }
 
-                // 리스트를 request 객체에 설정
+
                 req.setAttribute("item", item);
                 req.setAttribute("item_id", item_id);
             } else {
                 req.setAttribute("error_message", "해당 투표를 찾을 수 없습니다.");
             }
 
-            // 결과를 JSP로 포워딩
+
             RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/vote/vote.jsp");
             dispatcher.forward(req, resp);
 
@@ -83,14 +83,11 @@ public class VoteController extends HttpServlet {
         String[] splitSession = vote_session.split(":");
         String vote_writer = splitSession[0];
 
-
-        // 선택된 항목의 items_id 값을 가져옴
         String selectedItemId = req.getParameter("selectedItem");
 
-        // 선택된 항목이 있는지 확인
         if (selectedItemId != null && !selectedItemId.isEmpty()) {
-            // 여기서 선택된 항목 ID로 원하는 처리 (예: 데이터베이스 업데이트 또는 저장)
-            int itemId = Integer.parseInt(selectedItemId); // 선택된 항목의 items_id를 정수로 변환
+
+            int itemId = Integer.parseInt(selectedItemId);
 
             try {
                 voteService.voteStoreResult(itemId, vote_writer);
@@ -99,7 +96,6 @@ public class VoteController extends HttpServlet {
                 throw new RuntimeException(e);
             }
         } else {
-            // 선택되지 않았을 경우, 에러 메시지 표시
             req.setAttribute("error_message", "항목을 선택하지 않았습니다.");
             RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/vote/vote.jsp");
             dispatcher.forward(req, resp);

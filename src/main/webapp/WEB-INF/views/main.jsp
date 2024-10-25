@@ -1,3 +1,10 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: choeyunseo
+  Date: 2024. 10. 23.
+  Time: 오후 5:59
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@ page import="java.util.ArrayList" %>
 <!DOCTYPE html>
@@ -22,18 +29,15 @@
             ArrayList<Object[]> voteList = (ArrayList<Object[]>) voteListObj;
             if (voteList != null && !voteList.isEmpty()) {
                 for (Object[] vote : voteList) {
-                    // vote[0] = vote_id, vote[1] = title, vote[2] = author (예시)
     %>
     <tr>
-        <td><%= vote[1] %></td> <!-- 제목 -->
-        <td><%= vote[2] %></td> <!-- 작성자 -->
+        <td><%= vote[1] %></td>
+        <td><%= vote[2] %></td>
         <td>
-            <!-- 투표하기/재투표하기 버튼 -->
             <input type="hidden" id="voteId-<%= vote[0] %>" value="<%= vote[0] %>">
             <% boolean isVoted = (boolean) vote[4];
                 if (isVoted) {
             %>
-<%--            <button onclick="submitVote('<%= vote[0] %>', true)">재투표하기</button>--%>
             <form action="/revote" method="get" style="margin: 0;">
                 <input type="hidden" name="voteId" value="<%= vote[0] %>">
                 <button type="submit">재투표하기</button>
@@ -49,7 +53,6 @@
             if(isMaster) {
         %>
         <td>
-            <!-- 삭제 버튼 -->
             <form action="/voteDelete" method="post" style="margin: 0;">
                 <input type="hidden" name="voteId" value="<%= vote[0] %>">
                 <button type="submit" onclick="return confirm('정말 삭제하시겠습니까?');">삭제</button>

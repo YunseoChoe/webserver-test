@@ -32,10 +32,8 @@ public class Main extends HttpServlet {
 
         try {
             ArrayList<Object[]> voteList = voteListService.voteList(vote_writer);
-            // request 객체에 voteList를 속성으로 추가
             req.setAttribute("voteList", voteList);
 
-            // JSP로 포워딩
             req.getRequestDispatcher("/WEB-INF/views/main.jsp").forward(req, resp);
         } catch (Exception e) {
             throw new RuntimeException(e);

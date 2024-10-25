@@ -23,10 +23,8 @@ public class VoteResultController extends HttpServlet {
         String voteIdParam = req.getParameter("voteId");
 
         try {
-            // voteId 파라미터가 존재하는지 확인
             int voteId = Integer.parseInt(voteIdParam);
 
-            // VoteService를 통해 vote_title과 items를 가져오기
             ArrayList<Object[]> voteData = voteService.vote(voteId);
 
             if (voteData != null && !voteData.isEmpty()) {
@@ -36,10 +34,10 @@ public class VoteResultController extends HttpServlet {
 
                 for (Object[] data : voteData) {
                     if (data[0].equals("vote_title")) {
-                        // vote_title 설정
+
                         req.setAttribute("vote_title", data[1]);
                     } else if (data[0].equals("item")) {
-                        // item 값 추가
+
                         item.add((String) data[1]);
                     }
 
@@ -50,14 +48,14 @@ public class VoteResultController extends HttpServlet {
 
                 }
 
-                // 리스트를 request 객체에 설정
+
                 req.setAttribute("item", item);
                 req.setAttribute("item_count", item_count);
             } else {
                 req.setAttribute("error_message", "해당 투표를 찾을 수 없습니다.");
             }
 
-            // 결과를 JSP로 포워딩
+
             RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/vote/voteResult.jsp");
             dispatcher.forward(req, resp);
 

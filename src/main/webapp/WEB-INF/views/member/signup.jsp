@@ -22,12 +22,6 @@
 
     <input type="submit" value="제출">
 </form>
-
-<!-- 오류 메시지 처리 -->
-<%--<% String error = request.getParameter("error");--%>
-<%--    if (error != null && error.equals("1")) { %>--%>
-<%--<p style="color: red;">회원가입 중 오류가 발생했습니다. 다시 시도해 주세요.</p>--%>
-<%--<% } %>--%>
 </body>
 </html>
 

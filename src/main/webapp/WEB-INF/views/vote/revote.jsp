@@ -1,3 +1,10 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: choeyunseo
+  Date: 2024. 10. 23.
+  Time: 오후 5:59
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page import="java.util.List" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -10,10 +17,8 @@
 
 <h1>재투표</h1>
 
-<!-- 투표 제목 출력 -->
 <h2>투표 제목: <%= request.getAttribute("vote_title") %></h2>
 
-<!-- 투표 항목 출력 -->
 <h3>투표 항목:</h3>
 
 
@@ -28,7 +33,6 @@
 
   %>
   <input type="hidden" name="voteId" value="<%= voteId %>">
-  <!-- 각 항목에 대해 radio 버튼과 label 출력 -->
   <input type="radio" name="selectedItem" value="<%= item_id.get(i) %>" id="item<%= item_id.get(i) %>" checked="checked" required>
   <label for="item<%= item_id.get(i) %>"><%= item.get(i) %></label>
   <% }

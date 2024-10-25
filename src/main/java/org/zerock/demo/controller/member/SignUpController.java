@@ -45,7 +45,6 @@ public class SignUpController extends HttpServlet {
 
                 System.out.println("회원가입 성공");
 
-                // 로그인처리 (session에 값 저장하기)
                 HttpSession session = request.getSession();
                 String loginInfo = username + ":" + password;
                 session.setAttribute("logininfo", loginInfo);
@@ -57,10 +56,10 @@ public class SignUpController extends HttpServlet {
             }
 
         } catch (Exception e) {
-            // 예외 처리 (예외 메시지 출력)
+
             System.out.println("회원가입 예외처리");
             e.printStackTrace();
-            response.sendRedirect("/signup");  // 오류 시 다시 회원가입 페이지로 리다이렉트
+            response.sendRedirect("/signup");
         }
     }
 }

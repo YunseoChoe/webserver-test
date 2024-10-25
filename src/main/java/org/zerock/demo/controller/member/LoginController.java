@@ -18,20 +18,6 @@ public class LoginController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-//        HttpSession session = request.getSession();
-//
-//        if(session.isNew()) {
-//            response.sendRedirect("/");
-//            return;
-//        }
-//
-//        if(session.getAttribute("logininfo") == null) {
-//            response.sendRedirect("/");
-//            return;
-//        }
-
-        // 정상적인 경우
-
 
         request.getRequestDispatcher("WEB-INF/login.jsp").forward(request,response);
     }

@@ -36,7 +36,6 @@ public class VoteRegisterController extends HttpServlet {
         String[] splitSession = vote_session.split(":");
         String vote_writer = splitSession[0];
 
-        // 배열을 ArrayList로 변환
         ArrayList<String> vote_items = new ArrayList<>();
 
         if (voteItemsArray != null) {
@@ -50,7 +49,6 @@ public class VoteRegisterController extends HttpServlet {
 
         try {
             voteRegisterService.voteRegister(voteRegisterDTO);
-//            request.getRequestDispatcher("WEB-INF/views/main.jsp");
             response.sendRedirect("/main");
         } catch (Exception e) {
             throw new RuntimeException(e);

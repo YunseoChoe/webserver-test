@@ -30,16 +30,16 @@ public class RevoteController extends HttpServlet {
 
 
         try {
-            // voteId 파라미터가 존재하는지 확인
+
             int voteId = Integer.parseInt(voteIdParam);
 
-            // VoteService를 통해 vote_title과 items를 가져오기
+
             ArrayList<Object[]> voteData = voteService.revote(voteId, vote_writer);
 
             if (voteData != null && !voteData.isEmpty()) {
                 List<String> item = new ArrayList<>();
                 List<Integer> item_id = new ArrayList<>();
-                Integer revoteItemId = null;  // 이미 투표한 항목의 ID 저장 변수
+                Integer revoteItemId = null;
 
                 for (Object[] data : voteData) {
                     if (data[0].equals("vote_title")) {
@@ -50,13 +50,13 @@ public class RevoteController extends HttpServlet {
                         item.add((String) data[1]);
                     }
 
-                    // items_id 추가는 항상 data[2]로 접근
+
                     if (data.length > 2 && data[2] != null) {
                         item_id.add((Integer) data[2]);
                     }
-                    // revote_item (이미 투표한 항목)에 대한 처리
+
                     if (data[0].equals("revote_item")) {
-                        revoteItemId = (Integer) data[1];  // 이미 투표한 항목의 items_id 저장
+                        revoteItemId = (Integer) data[1];
                     }
                 }
 
@@ -97,15 +97,12 @@ public class RevoteController extends HttpServlet {
         String[] splitSession = vote_session.split(":");
         String vote_writer = splitSession[0];
 
-
-        // 선택된 항목의 items_id 값을 가져옴
         String selectedItemId = req.getParameter("selectedItem");
         Integer voteId = Integer.valueOf(req.getParameter("voteId"));
 
-        // 선택된 항목이 있는지 확인
         if (selectedItemId != null && !selectedItemId.isEmpty()) {
-            // 여기서 선택된 항목 ID로 원하는 처리 (예: 데이터베이스 업데이트 또는 저장)
-            int itemId = Integer.parseInt(selectedItemId); // 선택된 항목의 items_id를 정수로 변환
+
+            int itemId = Integer.parseInt(selectedItemId);
 
             try {
                 voteService.revoteStoreResult(itemId, vote_writer, voteId);
@@ -114,7 +111,6 @@ public class RevoteController extends HttpServlet {
                 throw new RuntimeException(e);
             }
         } else {
-            // 선택되지 않았을 경우, 에러 메시지 표시
             req.setAttribute("error_message", "항목을 선택하지 않았습니다.");
             RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/vote/revote.jsp");
             dispatcher.forward(req, resp);
