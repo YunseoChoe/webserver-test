@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-//@WebFilter(urlPatterns = {"/signup"})
+@WebFilter(urlPatterns = {"/voteregister", "/voteDetail", "/main"})
 public class LoginCheckFilter implements Filter {
 
     @Override

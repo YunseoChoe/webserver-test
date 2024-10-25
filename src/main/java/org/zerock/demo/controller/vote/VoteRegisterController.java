@@ -50,7 +50,8 @@ public class VoteRegisterController extends HttpServlet {
 
         try {
             voteRegisterService.voteRegister(voteRegisterDTO);
-            request.getRequestDispatcher("WEB-INF/views/main.jsp");
+//            request.getRequestDispatcher("WEB-INF/views/main.jsp");
+            response.sendRedirect("/main");
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
