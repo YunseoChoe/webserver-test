@@ -34,20 +34,18 @@ public class VoteResultController extends HttpServlet {
 
                 for (Object[] data : voteData) {
                     if (data[0].equals("vote_title")) {
-
                         req.setAttribute("vote_title", data[1]);
                     } else if (data[0].equals("item")) {
-
                         item.add((String) data[1]);
                     }
 
                     if (data.length > 2 && data[2] != null) {
-                        item_count.add((Integer) data[2]);
+                        item_count.add((Integer) data[2]); // 수정: item_count를 Integer로 처리
                     }
-
-
                 }
 
+
+                System.out.println(item_count);
 
                 req.setAttribute("item", item);
                 req.setAttribute("item_count", item_count);

@@ -26,8 +26,7 @@ public class Main extends HttpServlet {
         System.out.println(vote_session);
         String[] splitSession = vote_session.split(":");
         String vote_writer = splitSession[0];
-
-
+        
         System.out.println(vote_writer);
 
         try {

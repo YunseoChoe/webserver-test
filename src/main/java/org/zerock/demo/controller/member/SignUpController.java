@@ -39,7 +39,9 @@ public class SignUpController extends HttpServlet {
             // 회원 정보 저장
             if(signupService.signUpCheck(signupDTO)) {
                 request.getRequestDispatcher("/WEB-INF/views/member/signuperror.jsp").forward(request, response);
+
             }
+
             else {
                 signupService.signUp(signupDTO);
 
@@ -56,10 +58,10 @@ public class SignUpController extends HttpServlet {
             }
 
         } catch (Exception e) {
-
             System.out.println("회원가입 예외처리");
             e.printStackTrace();
-            response.sendRedirect("/signup");
+            request.getRequestDispatcher("/WEB-INF/views/member/signuperror.jsp").forward(request, response);
         }
+
     }
 }

@@ -196,6 +196,8 @@ public class VoteDAO {
                 }
             }
 
+
+
             try (PreparedStatement preparedStatement2 = connection.prepareStatement(sql2)) {
                 preparedStatement2.setString(1, memberUsername);
                 preparedStatement2.setInt(2, items_id);
@@ -259,10 +261,11 @@ public class VoteDAO {
             Object[] itemData = new Object[3];
             itemData[0] = "item";
             itemData[1] = resultSet.getString("item");
-            itemData[2] = resultSet.getString("item_count");
+            itemData[2] = resultSet.getInt("item_count");
             voteData.add(itemData);
         }
         return voteData;
-        }
     }
+
+}
 
